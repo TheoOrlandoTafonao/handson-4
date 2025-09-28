@@ -23,6 +23,10 @@ public class DoWhileLoopPractice {
         System.out.println("TODO 1: Count 1 to 5");
         int count = 1;
         // Your code here:
+        do {
+            System.out.println(count);
+            count++;
+        } while (count <= 5);
 
 
         System.out.println();
@@ -33,6 +37,17 @@ public class DoWhileLoopPractice {
         System.out.println("TODO 2: Menu simulation");
         int choice = 1;
         // Your code here:
+        do {
+            System.out.println("Menu: 1. Start  2. Exit");
+
+            if (choice == 1) {
+                System.out.println("Start");
+                choice = 2; // langsung set exit agar loop berhenti
+            } else {
+                System.out.println("Exit");
+            }
+
+        } while (choice != 2);
 
 
         System.out.println();
@@ -44,6 +59,17 @@ public class DoWhileLoopPractice {
         int inputValue = -1; // Start with invalid
         int attempts = 0;
         // Your code here (validate inputValue should be between 1-10):
+        do {
+            attempts++;
+            System.out.println("Attempt " + attempts + ": input = " + inputValue);
+
+            // Cek validasi sederhana: input harus >= 0
+            if (inputValue < 0) {
+                System.out.println("Invalid input, try again...");
+                inputValue = 10; // simulasi: perbaiki jadi valid setelah percobaan
+            }
+
+        } while (inputValue < 0);
 
 
         System.out.println("Valid input accepted: " + inputValue);
@@ -54,6 +80,9 @@ public class DoWhileLoopPractice {
         System.out.println("TODO 4: Executes even when condition is false");
         boolean condition = false;
         // Your code here:
+        do {
+            System.out.println("This will run once even though condition is false!");
+        } while (condition);
 
 
         System.out.println();
@@ -66,6 +95,19 @@ public class DoWhileLoopPractice {
         int index = 0;
         int sum = 0;
         // Your code here:
+        do {
+            int current = numbers[index];
+            System.out.println("Reading: " + current);
+
+            if (current == 0) {
+                System.out.println("Zero encountered, stop summing.");
+                break; // keluar dari loop kalau ketemu 0
+            }
+
+            sum += current;
+            index++;
+
+        } while (index < numbers.length);
 
 
         System.out.println("Sum until zero: " + sum);
@@ -77,6 +119,12 @@ public class DoWhileLoopPractice {
         int number = 12345;
         int reversed = 0;
         // Your code here:
+        do {
+            int digit = number % 10; // ambil digit terakhir
+            reversed = reversed * 10 + digit; // tambah ke reversed
+            number /= 10; // buang digit terakhir
+        } while (number != 0);
+
 
 
         System.out.println("Reversed: " + reversed);
@@ -88,7 +136,21 @@ public class DoWhileLoopPractice {
         String text = "programming";
         int charIndex = 0;
         char target = 'a';
+        boolean found = false;
         // Your code here:
+        do {
+            if (text.charAt(charIndex) == target) {
+                found = true;
+                break; // berhenti begitu ketemu
+            }
+            charIndex++;
+        } while (charIndex < text.length());
+
+        if (found) {
+            System.out.println("First occurrence of '" + target + "' is at index " + charIndex);
+        } else {
+            System.out.println("'" + target + "' not found in the text.");
+        }
 
 
         System.out.println("Found 'a' at index: " + charIndex);
@@ -99,6 +161,10 @@ public class DoWhileLoopPractice {
         System.out.println("TODO 8: Countdown timer");
         int timer = 5;
         // Your code here:
+        do {
+            System.out.println(timer);
+            timer--;
+        } while (timer > 0);
 
 
         System.out.println("Go!");
@@ -112,6 +178,26 @@ public class DoWhileLoopPractice {
         int attemptCount = 0;
         int maxAttempts = 3;
         // Your code here:
+        do {
+            attemptCount++;
+            System.out.println("Attempt " + attemptCount + ": entered password = " + enteredPassword);
+
+            if (enteredPassword.equals(correctPassword)) {
+                System.out.println("Password correct! Access granted.");
+                break; // keluar loop kalau password benar
+            } else {
+                System.out.println("Incorrect password.");
+                // simulasi perbaikan password: setelah percobaan pertama jadi benar
+                if (attemptCount == 1) {
+                    enteredPassword = "secret123";
+                }
+            }
+
+        } while (attemptCount < maxAttempts);
+
+        if (!enteredPassword.equals(correctPassword)) {
+            System.out.println("Maximum attempts reached. Access denied.");
+        }
 
 
         System.out.println();
@@ -123,6 +209,10 @@ public class DoWhileLoopPractice {
         int currentLevel = 1;
         int targetLevel = 5;
         // Your code here:
+        do {
+            System.out.println("Completing Level " + currentLevel + "...");
+            currentLevel++;
+        } while (currentLevel <= targetLevel);
 
 
         System.out.println("All levels completed!");
